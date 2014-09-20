@@ -17,6 +17,12 @@ Template.leaderboard.events({
 		var playerId = this._id;
 		Session.set('selectedPlayer',playerId);
 	},
+	
+	'click #decrement':function(){
+		var selectedPlayer = Session.get('selectedPlayer');
+		PlayersList.update({_id:selectedPlayer},{$inc:{score:-5}});
+	}
+
 	'click #increment':function(){
 		var selectedPlayer = Session.get('selectedPlayer');
 		PlayersList.update({_id:selectedPlayer},{$inc:{score:5}});
